@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from openerp.osv import osv, fields
 
-
 import time
 
 class Patient(osv.Model):
@@ -63,6 +62,7 @@ class Department(osv.Model):
         
         appointment_obj = self.pool.get('his_code.appointment')
 
+        # set current date
         now = time.strftime("%c")
         print "Current date " + now
         
