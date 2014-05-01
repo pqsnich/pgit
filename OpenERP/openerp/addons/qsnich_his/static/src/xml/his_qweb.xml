@@ -1,0 +1,45 @@
+<templates>
+  <t t-name="qsnich_his.custom_menu">
+    <div class="oe_qsnich_his_menu">
+      <h1 class="oe_qsnich_his_header_1">งานเวชระเบียนและห้องบัตร</h1>
+      <div>
+      	<ul>
+        	<li><a class ="oe_qsnich_his_patient_new_link" href="#">เพิ่มรายชื่อผู้ป่วยใหม่</a></li>
+        	<li><a class ="oe_qsnich_his_patient_query_link" href="#">เรียกดูรายชื่อผู้ป่วย</a></li>
+        	<p class="oe_qsnich_his_paragraph"></p>
+        	<div>
+        		<div><ol class="oe_qsnich_his_patient_results"></ol></div>
+        	</div>
+		</ul>
+      </div>
+    </div>   
+  </t>
+  <t t-name="qsnich_his.message_service">
+    <div class="oe_qsnich_his_menu">
+      <h1 class="oe_qsnich_his_header_1">Start/Stop ตรวจข้อความใหม่</h1>
+        <group>
+        	<button type="button" class="oe_qsnich_his_start">Start</button>
+        	<button type="button" class="oe_qsnich_his_stop">Stop</button>
+        </group>
+    </div>
+  </t>
+  
+  <t t-name="qsnich_his.FieldPID" t-extend="FieldChar">
+    <t t-jquery="input">
+    this.parent().append('<button class = "oe_qsnich_his_pid_search">Search</button>');
+    </t>
+  </t>
+  
+  <t t-name="qsnich_his.FieldFirstName" t-extend="FieldChar">
+    <t t-jquery="input">
+    this.addClass("oe_qsnich_his_firstname");
+    </t>
+  </t>
+  
+   <t t-name="qsnich_his.FieldLastName" t-extend="FieldChar">
+    <t t-jquery="input">
+    this.addClass("oe_qsnich_his_lastname");
+    </t>
+  </t>
+  
+</templates>

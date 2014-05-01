@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+  	<!-- Work Model-->
+  	<record model = "workflow" id = "wkf_appointment">
+  		<field name = "name">his_code.appointment.workflow</field>
+  		<field name = "osv">his_code.appointment</field>
+  		<field name = "on_create">True</field>
+  	</record>
+  	
+	<!-- Activities-->
+	<record model = "workflow.activity" id = "act_new">
+  		<field name = "wkf_id" ref ="wkf_appointment"/>
+  		<field name = "name">make_appointment</field>
+  		<field name = "flow_start">True</field>
+  		<field name = "kind">function</field>
+  		<field name = "action">write({'state':'make_appointment'})</field>
+  	</record>
+ 
+  	<record model = "workflow.activity" id = "act_arrived">
+  		<field name = "wkf_id" ref = "wkf_appointment"/>
+  		<field name = "name">arrived</field>
+  		<field name = "kind">function</field>
+  		<field name = "action">write({'state':'arrived'})</field>
+  	</record>
+  	
+  	<record model = "workflow.activity" id = "act_done">
+  		<field name = "wkf_id" ref = "wkf_appointment"/>
+  		<field name = "name">done</field>
+  		<field name = "flow_stop">True</field>
+  		<field name = "kind">function</field>
+  		<field name = "action">write({'state':'done'})</field>
+  	</record>
+  	
+	<!-- Transitions-->
+	<record model = "workflow.transition" id = "new_arrived">
+  		<field name = "act_from" ref = "act_new"/>
+  		<field name = "act_to" ref = "act_arrived"/>
+  		<field name = "signal">arrive</field>
+  	</record>
+  	
+  	<record model = "workflow.transition" id = "arrived_done">
+  		<field name = "act_from" ref = "act_arrived"/>
+  		<field name = "act_to" ref = "act_done"/>
+  		<field name = "signal">done</field>
+   	</record>
+
+
+  </data>
+</openerp>

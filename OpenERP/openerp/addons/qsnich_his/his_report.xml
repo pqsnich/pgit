@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+  
+  	<report
+  		auto="True"
+  		id="report_qsnich_his_patient"
+  		model="his_code.patient"
+  		name="his_code.patient"
+  		rml="qsnich_his/report/qsnich_his_patient.rml"
+  		string="Print Appointments"
+  		header="False"
+  		menu="True"
+  		/>
+  		
+  	<report
+  		auto="True"
+  		id="report_qsnich_his_departmentsearch"
+  		model="his_code.departmentsearch"
+  		name="his_code.departmentsearch"
+  		rml="qsnich_his/report/qsnich_his_departmentsearch.rml"
+  		string="Print Departmentsearch"
+  		header="False"
+  		menu="True"
+  		/>
+  		
+  </data>
+</openerp>

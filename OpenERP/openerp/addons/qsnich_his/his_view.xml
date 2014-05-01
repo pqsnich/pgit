@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record model="ir.ui.view" id="view_qsnich_his_patient_tree">
+      <field name="name">his_code.patient.tree</field>
+      <field name="model">his_code.patient</field>
+      <field name="arch" type="xml">
+        <tree string="Patient">
+          <field name="title"/>
+          <field name="first_name"/>
+          <field name="last_name"/>
+          <field name="sex"/>
+          <field name="id_number"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_qsnich_his_message_tree">
+        <field name="name">his_code.message.tree</field>
+        <field name="model">his_code.message</field>
+        <field name="arch" type="xml">
+        <tree string="Message" version="7.0">
+              <field name="message"/>
+        </tree>
+      </field>
+    </record>
+
+	<record model="ir.ui.view" id="view_qsnich_his_department_tree">
+		<field name="name">his_code.department.tree</field>
+		<field name="model">his_code.department</field>
+		<field name="arch" type="xml">
+			<tree string="Department" version="7.0">
+				<field name="name" />
+<!-- <field name="appointment_id" /> -->				
+			</tree>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="view_qsnich_his_departmentsearch_tree">
+        <field name="name">his_code.departmentsearch.tree</field>
+        <field name="model">his_code.departmentsearch</field>
+        <field name="arch" type="xml">
+        <tree string="Patient" version="7.0">
+              <field name="clinic_name"/>
+              <field name="search_date"/>
+        </tree>
+      </field>
+    </record>
+
+	<record model="ir.ui.view" id="view_qsnich_his_appointment_tree">
+        <field name="name">his_code.appointment.tree</field>
+        <field name="model">his_code.appointment</field>
+        <field name="arch" type="xml">
+        <tree string="Appointments" version="7.0">
+              <field name="patient_id"/>
+              <field name="clinic_name"/>
+              <field name="appointment_date"/>
+              <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="view_qsnich_his_patient_form">
+      <field name="name">his_code.patient.form</field>
+      <field name="model">his_code.patient</field>
+      <field name="arch" type="xml">
+        <form string="Patient" version="7.0">
+          <group cols="2">
+            <group colspan="1">
+              <field name="title"/>
+              <field name="first_name" class="oe_qsnich_his_firstname"/>
+              <field name="last_name" class="oe_qsnich_his_lastname"/>
+            </group>
+            <group colspan="1">
+              <field name="sex"/>
+              <field name="id_number" widget="person_id"/>
+              <field name="appointment_ids" />
+            </group>
+          </group>
+        </form>
+      </field>
+    </record>
+  
+    <record model="ir.ui.view" id="view_qsnich_his_message_form">
+      <field name="name">his_code.message.form</field>
+      <field name="model">his_code.message</field>
+      <field name="arch" type="xml">
+        <form string="Message" version="7.0">
+           <group>
+              <field name="message"/>
+           </group>
+        </form>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_qsnich_his_department_form">
+      <field name="name">his_code.department.form</field>
+      <field name="model">his_code.department</field>
+      <field name="arch" type="xml">
+        <form string="Patient" version="7.0">
+           <group>
+              <field name="name"/>
+              <field name="appointment_id"/>
+           </group>
+        </form>
+      </field>
+    </record>
+
+	<record model="ir.ui.view" id="view_qsnich_his_departmentsearch_form">
+    	<field name="name">his_code.departmentsearch.form</field>
+    	<field name="model">his_code.departmentsearch</field>
+    	<field name="arch" type="xml">
+    		<form string="Patient" version="7.0">
+           		<group>
+              		<field name="clinic_name"/>
+              		<field name="search_date"/>
+              		<field name="appointment_ids"/>
+           		</group>
+        	</form>
+      	</field>
+	</record>
+    
+	<record model="ir.ui.view" id="view_qsnich_his_appointment_form">
+    	<field name="name">his_code.appointment.form</field>
+    	<field name="model">his_code.appointment</field>
+    	<field name="arch" type="xml">
+    		<form string="Appointments" version="7.0">
+           		<group>
+<!-- 			    <field name="patient_id"/>		-->
+              		<field name="clinic_name"/>
+              		<field name="appointment_date"/>
+              		<field name="state"/>
+              		<button name="arrive" string="Patient Arrived" states="new" />
+              		<button name="done" string="Done" states="arrived"/>
+           		</group>
+        	</form>
+      	</field>
+	</record>
+
+    <record model="ir.actions.act_window" id="action_qsnich_his_patient">
+      <field name="name">Patient</field>
+      <field name="res_model">his_code.patient</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="context">{'search_default_open_true':True}</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Click to add a ..............
+        </p>
+      </field>
+    </record>
+
+    <record model="ir.actions.client" id="action_qsnich_his_menu_index">
+      <field name="name">Custom Menu</field>
+      <field name="tag">qsnich_his.MenuAction</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_qsnich_his_add_message">
+      <field name="name">his_code.message.action</field>
+      <field name="res_model">his_code.message</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>      
+    </record>
+
+    <record model="ir.actions.client" id="action_qsnich_his_check_message">
+      <field name="name">Message Checking</field>
+      <field name="tag">qsnich_his.MessgeAction</field>
+    </record>
+    
+   <record model="ir.actions.act_window" id="action_qsnich_his_department">
+      <field name="name">his_code.department.action</field>
+      <field name="res_model">his_code.department</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>      
+    </record>
+    
+     <record model="ir.actions.act_window" id="action_qsnich_his_registration">
+      <field name="name">his_code.appointment.action</field>
+      <field name="res_model">his_code.appointment</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>      
+    </record>
+
+     <record model="ir.actions.act_window" id="action_qsnich_his_departmentsearch">
+      <field name="name">his_code.departmentsearch.action</field>
+      <field name="res_model">his_code.departmentsearch</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>      
+    </record>
+    
+    <menuitem name="ระบบโรงพยาบาล QSNICH" id="menu_qsnich_his_top" 
+              parent="" sequence="1" 
+              action="action_qsnich_his_patient"/>
+ 
+    <menuitem name="บริการข้อมูล" id="menu_qsnich_his_patient_main" 
+              parent="menu_qsnich_his_top" sequence="1"/>
+
+    <menuitem name="ระบบแจ้งเตือน" id="menu_qsnich_his_message_main" 
+              parent="menu_qsnich_his_top" sequence="2"/>
+
+    <menuitem name="ข้อมูลผู้ป่วย" id="menu_qsnich_his_patient" 
+              parent="menu_qsnich_his_patient_main" sequence="3" 
+              action="action_qsnich_his_patient"/>
+
+    <menuitem name="คลินิก" id="menu_histest_department"
+              parent="menu_qsnich_his_patient_main" sequence="4"
+              action="action_qsnich_his_department"/>
+
+    <menuitem name="รายการนัด" id="menu_qsnich_his_registration" 
+              parent="menu_qsnich_his_patient_main" sequence="5"
+              action="action_qsnich_his_registration"/>
+              
+    <menuitem name="ค้นหาผู้ป่วยนัดแต่ละคลินิก" id="menu_qsnich_his_departmentsearch" 
+              parent="menu_qsnich_his_patient_main" sequence="6"
+              action="action_qsnich_his_departmentsearch"/>
+              
+    <menuitem name="ฟังก์ชั่นงานเวชระเบียนและห้องบัตร" id="menu_qsnich_his_custom_menu" 
+              parent="menu_qsnich_his_patient_main" sequence="7" 
+              action="action_qsnich_his_menu_index"/>
+
+    <menuitem name="ตรวจข้อความใหม่" id="menu_qsnich_his_check_new_message" 
+              parent="menu_qsnich_his_message_main" sequence="8" 
+              action="action_qsnich_his_check_message"/>
+
+    <menuitem name="เพิ่มข้อความ" id="menu_qsnich_his_add_new_message" 
+              parent="menu_qsnich_his_message_main" sequence="9" 
+              action="action_qsnich_his_add_message"/>
+
+  </data>
+</openerp>
