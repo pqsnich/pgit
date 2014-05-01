@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp.osv import osv, fields
 
+
 import time
 
 class Patient(osv.Model):
